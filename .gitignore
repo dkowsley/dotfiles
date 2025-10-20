@@ -1,9 +1,12 @@
 *.DS_Store
 *.LSOverride
 Thumbs.db
-.bundle
 .envrc
 .env
-.ruby-gemset
+.idea/
 .vscode
-yarn-error.log
+tmp/
+Icon*
+
+# ln -s $HOME/.zshrc zshrc
+zshrc
