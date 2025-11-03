@@ -12,7 +12,7 @@ __dotfiles_register_module mise
 __dotfiles_brew_register mise
 
 __dotfiles_configure_mise() {
-  	mise activate zsh
+		mise activate zsh
 #  	__dotfiles_add_path "${HOME}/.local/share/mise/shims" 10
 }
 

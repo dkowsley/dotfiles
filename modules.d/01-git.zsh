@@ -1,7 +1,8 @@
 #!/usr/bin/env zsh
+# shellcheck disable=SC2016
 # shellcheck disable=SC2086
 # shellcheck disable=SC2154
-# shellcheck disable=SC2016
+# shellcheck disable=SC2155
 # shellcheck disable=SC2296
 
 # Update module status via: __dotfiles_module git FIELD VALUE
@@ -38,7 +39,11 @@ __dotfiles_configure_git() {
 			git config --global tag.gpgSign true
 			local rc_file="${HOME}/$([ -r ~/.zshrc ] && echo .zshrc || echo .zprofile)"
 			if ! grep -q 'export GPG_TTY=$(tty)' "${rc_file}"; then
-				echo -e '\nexport GPG_TTY=$(tty)' >> "${rc_file}"
+				(
+					echo
+					echo 'export GPG_TTY=$(tty)'
+					echo
+				) >> "${rc_file}"
 			fi
 		fi
 	fi
@@ -97,10 +102,10 @@ __dotfiles_configure_git() {
 
 	while IFS= read -r line; do
 		local alias_name=$(echo "${line}" | sed -E 's|alias\.([^ ]+) (.+)|\1|g')
-	  	local alias_cmd=$(echo "${line}" | sed -E 's|alias\.([^ ]+) (.+)|\2|g')
-	  	local str_wrap_char="'"
-	  	if [[ "${alias_cmd}" == *\'* ]]; then
-	  		str_wrap_char='"'
+			local alias_cmd=$(echo "${line}" | sed -E 's|alias\.([^ ]+) (.+)|\2|g')
+			local str_wrap_char="'"
+			if [[ "${alias_cmd}" == *\'* ]]; then
+				str_wrap_char='"'
 		fi
 		echo "alias g${alias_name}=${str_wrap_char}git ${alias_cmd}${str_wrap_char}"
 	done < <(git config --get-regexp ^alias\\.)

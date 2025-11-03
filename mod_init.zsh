@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 if [[ $# -ne 2 ]]; then
-  echo "Usage: ${0} MODULE_NAME PRIORITY"
+	echo "Usage: ${0} MODULE_NAME PRIORITY"
 fi
 
 cd "$(realpath "$(dirname "${0}")")" || exit 1
