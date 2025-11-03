@@ -1,31 +1,66 @@
-[core]
-  editor = vi
-  excludesfile = ~/.gitignore
-  autocrlf = input
-[color]
-  branch = auto
-  diff = auto
-  interactive = auto
-  status = auto
+; [user]
+;     name = Foo Barringon
+;     email = foo@example.com
+;     signingkey = 036EF0673C065AC1!
 [init]
-  defaultBranch = main
-[web]
-  browser = google-chrome
-[credential]
-  helper = osxkeychain
-[push]
-  default = simple
-[merge]
-  tool = kdiff3
-[difftool]
-  prompt = false
+    defaultBranch = main
+[core]
+    editor = vim
+    pager = delta
+    excludesfile = ~/.gitignore
+    autocrlf = input
+[color]
+    ui = auto
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
 [alias]
-  c = commit
-  ca = commit -a
-  cm = commit -m
-  cam = commit -am
-  d = diff
-  dc = diff --cached
-  l = log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit
+    a = add
+    br = branch
+    c = commit
+    ca = commit -a
+    cam = commit -am
+    casm = commit -asem
+    cassm = commit -S -asem
+    cb = checkout -b
+    cg = config --global
+    cm = commit -m
+    co = checkout
+    csm = commit -sem
+    cssm = commit -S -sem
+    current = rev-parse --abbrev-ref HEAD
+    d = diff
+    dc = diff --cached
+    dm = diff origin/main
+    dms = diff origin/main --staged
+    dp = diff
+    dpm = diff origin/main
+    dpms = diff origin/main --staged
+    dps = diff --staged
+    ds = diff --staged
+    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+    l = log --graph --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit
+    p = push
+    s = status
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true
+[merge]
+    conflictStyle = zdiff3
+    tool = kdiff3
+[web]
+    browser = google-chrome
+[credential]
+    helper = osxkeychain
+[push]
+    default = simple
+[difftool]
+    prompt = false
 [pull]
-	rebase = true
+    rebase = true
+[commit]
+    gpgsign = true
+[tag]
+    gpgSign = true

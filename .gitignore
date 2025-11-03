@@ -9,4 +9,4 @@ tmp/
 Icon*
 
 # ln -s $HOME/.zshrc zshrc
-zshrc
+zshrc*
